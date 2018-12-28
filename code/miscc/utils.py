@@ -32,7 +32,8 @@ def drawCaption(convas, captions, ixtoword, vis_size, off1=2, off2=2):
     img_txt = Image.fromarray(convas)
     # get a font
     # fnt = None  # ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 50)
-    fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 50)
+    # fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 50)
+    fnt = ImageFont.truetype('Pillow/Tests/fonts/arial', 50)
     # get a drawing context
     d = ImageDraw.Draw(img_txt)
     sentence_list = []
@@ -163,7 +164,7 @@ def build_super_images(real_imgs, captions, ixtoword,
         row_merge = np.concatenate(row_merge, 1)
         txt = text_map[i * FONT_MAX: (i + 1) * FONT_MAX]
         if txt.shape[1] != row.shape[1]:
-            print('txt', txt.shape, 'row', row.shape)
+            print(('txt', txt.shape, 'row', row.shape))
             bUpdate = 0
             break
         row = np.concatenate([txt, row, row_merge], 0)
@@ -268,8 +269,8 @@ def build_super_images2(real_imgs, captions, cap_lens, ixtoword,
         row_merge = np.concatenate(row_merge_new[:topK], 1)
         txt = np.concatenate(txt_new[:topK], 1)
         if txt.shape[1] != row.shape[1]:
-            print('Warnings: txt', txt.shape, 'row', row.shape,
-                  'row_merge_new', row_merge_new.shape)
+            print(('Warnings: txt', txt.shape, 'row', row.shape,
+                  'row_merge_new', row_merge_new.shape))
             bUpdate = 0
             break
         row = np.concatenate([txt, row_merge], 0)
